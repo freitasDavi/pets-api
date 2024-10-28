@@ -1,0 +1,6 @@
+﻿services:
+  pets:
+    image: pets
+    build:
+      context: .
+      dockerfile: Dockerfile
