@@ -12,9 +12,15 @@ WORKDIR /src
 COPY ["Pets.csproj", "./"]
 RUN dotnet restore "Pets.csproj"
 COPY . .
+ARG db_database
+ARG db_host
+ARG db_password
+ARG db_user
+ARG token_audience
+ARG token_issuer
+ARG token_key
 WORKDIR "/src/"
-ARG RAILWAY_db_database
-RUN $ECHO $RAILWAY_db_database
+RUN echo '{ "Token": { "Audience": "'$token_audience'", "Issuer": "'$token_issuer'", "Key": "'$token_key'" }, "ConnectionString": { "db": "Host='$db_host';Database='$db_database';Username='$db_user';Password='$db_password'" } }' > appsettings.Release.json
 RUN dotnet build "Pets.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
