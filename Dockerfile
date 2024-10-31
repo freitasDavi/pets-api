@@ -20,7 +20,7 @@ ARG token_audience
 ARG token_issuer
 ARG token_key
 WORKDIR "/src/"
-RUN echo '{ "Token": { "Audience": "'$token_audience'", "Issuer": "'$token_issuer'", "Key": "'$token_key'" }, "ConnectionString": { "db": "Host='$db_host';Database='$db_database';Username='$db_user';Password='$db_password'" } }' > appsettings.Release.json
+RUN echo '{ "Token": { "Audience": "'$token_audience'", "Issuer": "'$token_issuer'", "Key": "'$token_key'" }, "ConnectionStrings": { "db": "Host='$db_host';Database='$db_database';Username='$db_user';Password='$db_password'" } }' > appsettings.Release.json
 RUN dotnet build "Pets.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
