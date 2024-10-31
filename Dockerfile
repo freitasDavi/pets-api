@@ -13,10 +13,10 @@ COPY ["Pets.csproj", "./"]
 RUN dotnet restore "Pets.csproj"
 COPY . .
 WORKDIR "/src/"
-
-ARG db_database
-RUN $ECHO $db_database
-
+ARG RAILWAY_db_database
+RUN $ECHO 'TESTE'
+RUN $ECHO $RAILWAY_db_database
+RUN $ECHO 'TESTE FEITO'
 RUN dotnet build "Pets.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
