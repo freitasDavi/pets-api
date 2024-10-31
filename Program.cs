@@ -20,7 +20,7 @@ builder.Services.AddDbContext<Context>(options =>
 );
 
 Console.WriteLine(builder.Configuration.GetSection("Token").GetValue<string>("Audience"));
-Console.WriteLine(builder.Configuration.GetConnectionString("db"));
+Console.WriteLine(builder.Configuration.GetSection("ConnectionStrings"));
 
 builder.Services.AddAuthentication(options =>
 {
