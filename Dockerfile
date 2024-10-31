@@ -14,8 +14,8 @@ RUN dotnet restore "Pets.csproj"
 COPY . .
 WORKDIR "/src/"
 
-ARG db-database
-RUN $ECHO $db-database
+ARG db_database
+RUN $ECHO $db_database
 
 RUN dotnet build "Pets.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
