@@ -19,8 +19,7 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("db"))
 );
 
-Console.WriteLine(builder.Configuration.GetSection("Token").GetValue<string>("Audience"));
-Console.WriteLine(builder.Configuration.GetSection("ConnectionStrings").GetValue<string>("db"));
+Console.WriteLine(builder.Configuration.GetConnectionString("db"));
 
 builder.Services.AddAuthentication(options =>
 {
